@@ -69,6 +69,10 @@
 		{
 			"Name": "MoviePipelineMaskRenderPass",
 			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
 		}
 	]
 }
