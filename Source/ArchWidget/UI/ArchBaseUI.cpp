@@ -2,4 +2,9 @@
 
 
 #include "ArchBaseUI.h"
+#include "Widgets/CommonActivatableWidgetContainer.h"
 
+void UArchBaseUI::RegisterLayer(FGameplayTag LayerTag, UCommonActivatableWidgetContainerBase* Widget)
+{
+	Layers.Add(LayerTag, Widget);
+}
