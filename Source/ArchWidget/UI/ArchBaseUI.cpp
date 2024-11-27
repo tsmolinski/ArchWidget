@@ -3,6 +3,22 @@
 
 #include "ArchBaseUI.h"
 #include "Widgets/CommonActivatableWidgetContainer.h"
+#include "CommonActivatableWidget.h"
+
+UCommonActivatableWidget* UArchBaseUI::PushWidgetToLayer(FGameplayTag LayerTag, UClass* ActivatableWidgetClass)
+{
+	if (UCommonActivatableWidgetContainerBase* Layer = GetLayerWidget(LayerTag))
+	{
+		return Layer->AddWidget<UCommonActivatableWidget>(ActivatableWidgetClass);
+	}
+
+	return nullptr;
+}
+
+UCommonActivatableWidgetContainerBase* UArchBaseUI::GetLayerWidget(FGameplayTag LayerTag)
+{
+	return Layers.FindRef(LayerTag);
+}
 
 void UArchBaseUI::RegisterLayer(FGameplayTag LayerTag, UCommonActivatableWidgetContainerBase* Widget)
 {

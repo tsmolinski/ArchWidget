@@ -7,6 +7,7 @@
 #include "ArchHUD.generated.h"
 
 class UArchBaseUI;
+class UCommonActivatableWidget;
 
 /**
  * This is a UI manager class. 
@@ -19,10 +20,19 @@ class ARCHWIDGET_API AArchHUD : public AHUD
 protected:
 	virtual void BeginPlay() override;
 
+public:
+	UFUNCTION(BlueprintCallable)
+	void ShowGameLayoutWidget();
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI Base") 
 	TSubclassOf<UArchBaseUI> ArchBaseUIWidgetClass;
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI Base")
+	TSubclassOf<UCommonActivatableWidget> GameLayoutWidgetClass;
+
 private:
 	TObjectPtr<UArchBaseUI> ArchBaseUIWidget;
+
+	TObjectPtr<UCommonActivatableWidget> GameLayoutWidget;
 };
