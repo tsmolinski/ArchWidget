@@ -7,7 +7,7 @@
 #include "ArchHUD.generated.h"
 
 class UArchBaseUI;
-class UCommonActivatableWidget;
+class UArchActivatableWidget;
 
 /**
  * This is a UI manager class. 
@@ -29,10 +29,10 @@ protected:
 	TSubclassOf<UArchBaseUI> ArchBaseUIWidgetClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI Base")
-	TSubclassOf<UCommonActivatableWidget> GameLayoutWidgetClass;
+	TSubclassOf<UArchActivatableWidget> GameLayoutWidgetClass;
 
 private:
 	TObjectPtr<UArchBaseUI> ArchBaseUIWidget;
 
-	TObjectPtr<UCommonActivatableWidget> GameLayoutWidget;
+	TObjectPtr<UArchActivatableWidget> GameLayoutWidget;
 };

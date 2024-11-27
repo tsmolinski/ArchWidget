@@ -2,10 +2,10 @@
 
 
 #include "ArchHUD.h"
-#include "../ArchBaseUI.h"
+#include "ArchWidget/UI/ArchBaseUI.h"
 #include "Kismet/GameplayStatics.h"
 #include "ArchWidget/ArchGameplayTags/ArchGameplayTags.h"
-#include "CommonActivatableWidget.h"
+#include "ArchWidget/UI/Widget/ArchActivatableWidget.h"
 
 void AArchHUD::BeginPlay()
 {
@@ -27,14 +27,8 @@ void AArchHUD::BeginPlay()
 
 void AArchHUD::ShowGameLayoutWidget()
 {
-	APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-	if (PlayerController)
+	if (GameLayoutWidgetClass)
 	{
-		/*if (GameLayoutWidgetClass)
-		{
-			GameLayoutWidget = CreateWidget<UCommonActivatableWidget>(PlayerController, GameLayoutWidgetClass);
-		}*/
-
 		ArchBaseUIWidget->PushWidgetToLayer(TAG_UI_Layer_GameStack, GameLayoutWidgetClass);
 	}
 }
