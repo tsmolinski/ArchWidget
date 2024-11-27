@@ -7,11 +7,11 @@
 #include "GameplayTagContainer.h"
 #include "ArchBaseUI.generated.h"
 
+class UCommonActivatableWidgetContainerBase;
+
 /**
  *	This is the basic UI layout. It contains layers and functionalities such as adding and removing widgets from layers.
  */
-
-class UCommonActivatableWidgetContainerBase;
 
 UCLASS()
 class ARCHWIDGET_API UArchBaseUI : public UCommonUserWidget
@@ -20,7 +20,7 @@ class ARCHWIDGET_API UArchBaseUI : public UCommonUserWidget
 
 protected:
 	UFUNCTION(BlueprintCallable)
-	void RegisterLayer(FGameplayTag LayerTag, UCommonActivatableWidgetContainerBase* Widget);
+	void RegisterLayer(UPARAM(meta = (Categories = "UI.Layer")) FGameplayTag LayerTag, UCommonActivatableWidgetContainerBase* Widget);
 
 private:
 	UPROPERTY(Transient)
