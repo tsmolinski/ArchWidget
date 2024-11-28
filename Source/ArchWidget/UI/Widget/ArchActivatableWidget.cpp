@@ -3,6 +3,16 @@
 
 #include "ArchActivatableWidget.h"
 
+UArchActivatableWidget::UArchActivatableWidget(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+}
+
+void UArchActivatableWidget::NativeOnInitialized()
+{
+	Super::NativeOnInitialized();
+}
+
 TOptional<FUIInputConfig> UArchActivatableWidget::GetDesiredInputConfig() const
 {
 	switch (InputConfig)

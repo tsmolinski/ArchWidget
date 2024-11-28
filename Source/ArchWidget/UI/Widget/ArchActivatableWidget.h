@@ -6,6 +6,8 @@
 #include "CommonActivatableWidget.h"
 #include "ArchActivatableWidget.generated.h"
 
+struct FUIInputConfig;
+
 UENUM(BlueprintType)
 enum class EArchWidgetInputMode : uint8
 {
@@ -24,6 +26,10 @@ class ARCHWIDGET_API UArchActivatableWidget : public UCommonActivatableWidget
 	GENERATED_BODY()
 	
 public:
+	UArchActivatableWidget(const FObjectInitializer& ObjectInitializer);
+
+	void NativeOnInitialized() override;
+
 	virtual TOptional<FUIInputConfig> GetDesiredInputConfig() const override;
 
 protected:
