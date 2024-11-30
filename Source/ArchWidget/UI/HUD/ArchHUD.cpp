@@ -29,9 +29,12 @@ void AArchHUD::BeginPlay()
 
 void AArchHUD::ShowGameLayoutWidget()
 {
-	if (GameLayoutWidgetClass)
+	if (ArchBaseUIWidget)
 	{
-		GameLayoutWidget = ArchBaseUIWidget->PushWidgetToLayer<UArchActivatableWidget>(TAG_UI_Layer_GameStack, GameLayoutWidgetClass);
+		if (GameLayoutWidgetClass)
+		{
+			GameLayoutWidget = ArchBaseUIWidget->PushWidgetToLayer<UArchActivatableWidget>(TAG_UI_Layer_GameStack, GameLayoutWidgetClass);
+		}
 	}
 }
 
@@ -47,6 +50,17 @@ void AArchHUD::ShowGenericPromptWidget(const FText& MessageText, FGenericPromptO
 						Prompt.SetupPrompt(MessageText, Confirmed, Declined); 
 				}
 			);
+		}
+	}
+}
+
+void AArchHUD::ShowInGameMenuWidget()
+{
+	if (ArchBaseUIWidget)
+	{
+		if (InGameMenuWidgetClass)
+		{
+			InGameMenuWidget = ArchBaseUIWidget->PushWidgetToLayer<UArchActivatableWidget>(TAG_UI_Layer_GameStack, InGameMenuWidgetClass);
 		}
 	}
 }

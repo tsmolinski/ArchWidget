@@ -25,10 +25,12 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	UFUNCTION(BlueprintCallable)
 	void ShowGameLayoutWidget();
 
 	void ShowGenericPromptWidget(const FText& MessageText, FGenericPromptOnConfirmedDelegate Confirmed, FGenericPromptOnConfirmedDelegate Declined);
+
+	UFUNCTION(BlueprintCallable)
+	void ShowInGameMenuWidget();
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI Base") 
@@ -40,10 +42,15 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
 	TSubclassOf<UArchGenericPromptWidget> GenericPromptWidgetClass;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
+	TSubclassOf<UArchActivatableWidget> InGameMenuWidgetClass;
+
 private:
 	TObjectPtr<UArchBaseUI> ArchBaseUIWidget;
 
 	TObjectPtr<UArchActivatableWidget> GameLayoutWidget;
 
 	TObjectPtr<UArchGenericPromptWidget> GenericPromptWidget;
+
+	TObjectPtr<UArchActivatableWidget> InGameMenuWidget;
 };
