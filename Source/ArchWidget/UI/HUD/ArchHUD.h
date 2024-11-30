@@ -4,10 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
+#include "ArchWidget/UI/Subsystem/ArchUIMessagingSubsystem.h"
 #include "ArchHUD.generated.h"
 
 class UArchBaseUI;
 class UArchActivatableWidget;
+class FText;
+class UArchGenericPromptWidget;
+class UArchGenericButton;
 
 /**
  * This is a UI manager class. 
@@ -24,15 +28,22 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ShowGameLayoutWidget();
 
+	void ShowGenericPromptWidget(const FText& MessageText, FGenericPromptOnConfirmedDelegate Confirmed, FGenericPromptOnConfirmedDelegate Declined);
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI Base") 
 	TSubclassOf<UArchBaseUI> ArchBaseUIWidgetClass;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI Base")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
 	TSubclassOf<UArchActivatableWidget> GameLayoutWidgetClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
+	TSubclassOf<UArchGenericPromptWidget> GenericPromptWidgetClass;
 
 private:
 	TObjectPtr<UArchBaseUI> ArchBaseUIWidget;
 
 	TObjectPtr<UArchActivatableWidget> GameLayoutWidget;
+
+	TObjectPtr<UArchGenericPromptWidget> GenericPromptWidget;
 };

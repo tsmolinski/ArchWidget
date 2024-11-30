@@ -6,6 +6,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "ArchWidget/ArchGameplayTags/ArchGameplayTags.h"
 #include "ArchWidget/UI/Widget/ArchActivatableWidget.h"
+#include "ArchWidget/UI/Widget/ArchGenericPromptWidget.h"
+#include "Internationalization/Text.h"
 
 void AArchHUD::BeginPlay()
 {
@@ -29,6 +31,22 @@ void AArchHUD::ShowGameLayoutWidget()
 {
 	if (GameLayoutWidgetClass)
 	{
-		ArchBaseUIWidget->PushWidgetToLayer(TAG_UI_Layer_GameStack, GameLayoutWidgetClass);
+		GameLayoutWidget = ArchBaseUIWidget->PushWidgetToLayer<UArchActivatableWidget>(TAG_UI_Layer_GameStack, GameLayoutWidgetClass);
+	}
+}
+
+void AArchHUD::ShowGenericPromptWidget(const FText& MessageText, FGenericPromptOnConfirmedDelegate Confirmed, FGenericPromptOnConfirmedDelegate Declined)
+{
+	if (ArchBaseUIWidget)
+	{
+		if (GenericPromptWidgetClass)
+		{
+			GenericPromptWidget = ArchBaseUIWidget->PushWidgetToLayer<UArchGenericPromptWidget>(TAG_UI_Layer_PopupStack, GenericPromptWidgetClass, [
+				MessageText, Confirmed, Declined](
+					UArchGenericPromptWidget& Prompt) {
+						Prompt.SetupPrompt(MessageText, Confirmed, Declined); 
+				}
+			);
+		}
 	}
 }
