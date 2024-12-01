@@ -33,10 +33,10 @@ protected:
 
 	FGenericPromptOnDeclinedDelegate OnDeclinedDelegate;
 
-	UPROPERTY(Meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Meta = (BindWidget))
 	TObjectPtr<UArchGenericButton> GenericYesBtn;
 
-	UPROPERTY(Meta = (BindWidget))
+	UPROPERTY(BlueprintReadWrite, Meta = (BindWidget))
 	TObjectPtr<UArchGenericButton> GenericNoBtn;
 
 private:
