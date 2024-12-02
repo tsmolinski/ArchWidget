@@ -21,6 +21,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText ButtonText;
 
+	UFUNCTION(BlueprintCallable)
+	void SetButtonText(FText InText);
+
 protected:
 	virtual void NativePreConstruct() override;
 

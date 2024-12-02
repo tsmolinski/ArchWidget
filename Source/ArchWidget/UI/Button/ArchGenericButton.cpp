@@ -5,6 +5,11 @@
 #include "CommonTextBlock.h"
 #include "Internationalization/Text.h"
 
+void UArchGenericButton::SetButtonText(FText InText)
+{
+	DisplayedText->SetText(InText);
+}
+
 void UArchGenericButton::NativePreConstruct()
 {
 	Super::NativePreConstruct();
