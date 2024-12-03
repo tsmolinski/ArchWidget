@@ -60,7 +60,7 @@ void AArchHUD::ShowInGameMenuWidget()
 	{
 		if (InGameMenuWidgetClass)
 		{
-			InGameMenuWidget = ArchBaseUIWidget->PushWidgetToLayer<UArchActivatableWidget>(TAG_UI_Layer_GameStack, InGameMenuWidgetClass);
+			InGameMenuWidget = ArchBaseUIWidget->PushWidgetToLayer<UArchActivatableWidget>(TAG_UI_Layer_GameMenuStack, InGameMenuWidgetClass);
 		}
 	}
 }
